@@ -1,0 +1,165 @@
+def group(l):
+    s=set(l)
+    d = list(s)
+    d.sort()
+    group=[]
+    if d[0]+2 not in d:
+        y = [d[0]]
+        group.append(y)
+        d.pop(d[0])
+    if d[2]-2 in d:
+        if d[2]-1 in d:
+            if d[2]+2 in d:
+                if d[2]+1 in d:
+                    k=[d[2]-2,d[2]-1,d[2],d[2]+2,d[2]+1]
+                    group.append(k)
+                    d.pop(d[2])
+                    d.remove(d[2] - 1)
+                    d.remove(d[2] - 2)
+                    print(d)
+                    d.remove(d[2] + 2)
+                    d.remove(d[2] + 1)
+                    if d != []:
+                        group(l)
+                else:
+                    k=[d[2]-2,d[2]-1,d[2],d[2]+2]
+                    group.append(k)
+                    d.pop(d[2])
+                    d.remove(d[2] - 1)
+                    d.remove(d[2] + 2)
+                    d.remove(d[2] - 2)
+                    if d != []:
+                        group(l)
+
+
+            elif d[2]+1 in d:
+                k=[d[2]-2,d[2]-1,d[2],d[2]+1]
+                group.append(k)
+                d.pop(d[2])
+                d.remove(d[2] - 1)
+                d.remove(d[2] - 2)
+                d.remove(d[2] + 1)
+                if d != []:
+                    group(l)
+            else:
+                k=[d[2]-2,d[2]-1,d[2]]
+                group.append(k)
+                d.pop(d[2])
+                d.remove(d[2] - 1)
+                d.remove(d[2] - 2)
+                if d != []:
+                    group(l)
+
+
+        elif d[2]+2 in d:
+            if d[2] + 1 in d:
+                k = [d[2] - 2, d[2], d[2] + 2, d[2] + 1]
+                group.append(k)
+                d.pop(d[2])
+                d.remove(d[2] - 2)
+                d.remove(d[2] + 2)
+                d.remove(d[2] + 1)
+                if d != []:
+                    group(l)
+            else:
+                k = [d[2] - 2, d[2], d[2] + 2]
+                group.append(k)
+                d.pop(d[2])
+                d.remove(d[2] - 2)
+                d.remove(d[2] + 2)
+                if d != []:
+                    group(l)
+
+        elif d[2] + 1 in d:
+            k = [d[2] - 2, d[2], d[2] + 1]
+            group.append(k)
+            d.pop(d[2])
+            d.remove(d[2] - 2)
+            d.remove(d[2] + 1)
+            if d != []:
+                group(l)
+        else:
+            k = [d[2] - 2, d[2],]
+            group.append(k)
+            d.pop(d[2])
+            d.remove(d[2] - 2)
+            if d != []:
+                group(l)
+
+
+    elif d[2] - 1 in d:
+        if d[2] + 2 in d:
+            if d[2] + 1 in d:
+                k = [d[2] - 1, d[2], d[2] + 2, d[2] + 1]
+                group.append(k)
+                d.pop(d[2])
+                d.remove(d[2] - 1)
+                d.remove(d[2] + 2)
+                d.remove(d[2] + 1)
+                if d != []:
+                    group(l)
+            else:
+                k = [d[2] - 1, d[2], d[2] + 2]
+                group.append(k)
+                d.pop(d[2])
+                d.remove(d[2] - 1)
+                d.remove(d[2] + 2)
+                if d != []:
+                    group(l)
+
+
+        elif d[2] + 1 in d:
+            k = [d[2] - 1, d[2], d[2] + 1]
+            group.append(k)
+
+            d.pop(d[2])
+            d.remove(d[2] - 1)
+            d.remove(d[2] + 1)
+            if d != []:
+                group(l)
+
+        else:
+            k = [d[2] - 1, d[2]]
+            group.append(k)
+            d.pop(d[2])
+            d.remove(d[2] - 1)
+            if d != []:
+                group(l)
+
+
+
+    elif d[2] + 2 in d:
+        if d[2] + 1 in d:
+            k = [d[2], d[2] + 2, d[2] + 1]
+            group.append(k)
+            d.pop(d[2])
+            d.remove(d[2] + 2)
+            d.remove(d[2] + 1)
+            if d != []:
+                group(l)
+        else:
+            k = [d[2], d[2] + 2]
+            group.append(k)
+            d.pop(d[2])
+            d.remove(d[2] + 2)
+            if d != []:
+                group(l)
+
+    elif d[2] + 1 in d:
+            k = [d[2],d[2] + 1]
+            group.append(k)
+            d.pop(d[2])
+            d.remove(d[2] + 1)
+            if d != []:
+                group(l)
+
+    else:
+        k=[d[2]]
+        group.append(k)
+        d.pop(d[2])
+        if d != []:
+            group(l)
+
+    print(group)
+l=[1,2,3,4,5]
+group(l)
